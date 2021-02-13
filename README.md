@@ -9,5 +9,9 @@ See Base-model.ipynb file in this repo.
 ...The context is in variable *text* and the question is in variable *question*
 * The task is done using transformers' 'Pipeline' strategy. Instantiating model and tokenizer separately led to bugs, so the section "Instantiating Tokenizer + Model" is incomplete
 
-### Next Steps
-* Containerizing the model
+### Next Steps 
+See [Trello](https://trello.com/b/WGPdUp7m/aisc-nlp-project) for specs
+* Packaging the model and serving it through Flask App
+* Building front end application (Flask App)
+* Serving the model and releasing Alpha
+
