@@ -8,21 +8,24 @@
     <title>Climateval</title>
 </head>
 <body>
-    <form>
-        <div class="mb-3">
-            <label for="uploadInput" class="form-label">Choose file here</label>
-            <input type="file" class="form-control" id="uploadInput" aria-describedby="emailHelp" value="Click to choose">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <div class="container-md">
+        <br><br>
+        <form action="{{url_for('upload')}}" method="post" enctype=multipart/form-data>
+            <div class="mb-3">
+                <label for="uploadInput" class="form-label">Upload a 10-K/Q or S-4 or Proxy PDF to extract from</label>
+                <input type="file" name="uploaded_file" class="form-control" id="uploadInput" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Select the question you'd like to answer</label>
+                <select class="form-select" name="question" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="QuestionString">Are there any climate-related risks with the potential to have a substantive financial or strategic impact?</option>
+                  </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
