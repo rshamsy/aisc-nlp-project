@@ -1,11 +1,14 @@
 import os
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, session
 from tika import parser
 from werkzeug.utils import secure_filename
 
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'pdf'}
+questions_dict = {
+    "1": "Are there any climate-related risks with the potential to have a substantive financial or strategic impact?"
+}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -29,6 +32,16 @@ def upload():
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file_data = parser.from_file(filepath)
     text = file_data['content']
-    return text
+
+    render_values = {
+        'question': questions_dict[request.form.get("question")], 
+        "context" : text,
+        "answer" : text
+    }
+
+    
+    return render_template('output.html', render_values=render_values)
+
+
     
 

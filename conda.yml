@@ -5,9 +5,13 @@ channels:
 dependencies:
   - ca-certificates=2021.1.19=hecd8cb5_0
   - certifi=2020.12.5=py38hecd8cb5_0
+  - click=7.1.2=pyhd3eb1b0_0
+  - itsdangerous=1.1.0=pyhd3eb1b0_0
+  - jinja2=2.11.3=pyhd3eb1b0_0
   - libcxx=10.0.0=1
   - libedit=3.1.20191231=h1de35cc_1
   - libffi=3.3=hb1e8313_2
+  - markupsafe=1.1.1=py38h1de35cc_1
   - ncurses=6.2=h0a44026_1
   - openssl=1.1.1i=h9ed2024_0
   - pip=20.3.3=py38hecd8cb5_0
@@ -16,6 +20,7 @@ dependencies:
   - setuptools=52.0.0=py38hecd8cb5_0
   - sqlite=3.33.0=hffcf06c_0
   - tk=8.6.10=hb0a8c7a_0
+  - werkzeug=1.0.1=pyhd3eb1b0_0
   - wheel=0.36.2=pyhd3eb1b0_0
   - xz=5.2.5=h1de35cc_0
   - zlib=1.2.11=h1de35cc_3
@@ -23,5 +28,28 @@ dependencies:
   - pip:
     - farm-haystack==0.7.0
     - urllib3==1.25.4
+    - chardet==4.0.0
+    - filelock==3.0.12
+    - flask==1.1.1
+    - idna==2.10
+    - joblib==0.13.2
+    - numpy==1.20.1
+    - packaging==20.9
+    - pyparsing==2.4.7
+    - python-dateutil==2.8.1
+    - pytz==2021.1
+    - regex==2020.11.13
+    - requests==2.25.1
+    - sacremoses==0.0.43
+    - scipy==1.6.0
+    - six==1.15.0
+    - tika==1.19
+    - tokenizers==0.10.1
+    - torch==1.7.1
+    - tqdm==4.32.2
+    - transformers==4.3.2
+    - typing-extensions==3.7.4.3
+    - urllib3==1.26.3
+    - wget==3.2
 prefix: /Users/MHK/anaconda/envs/aisc-nlp
 
