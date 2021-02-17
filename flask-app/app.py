@@ -33,6 +33,8 @@ def upload():
     file_data = parser.from_file(filepath)
     text = file_data['content']
 
+    
+
     render_values = {
         'question': questions_dict[request.form.get("question")], 
         "context" : text,
