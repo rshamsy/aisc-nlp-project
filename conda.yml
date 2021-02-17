@@ -27,7 +27,6 @@ dependencies:
   - ipykernel==5.3.4
   - pip:
     - farm-haystack==0.7.0
-    - urllib3==1.25.4
     - chardet==4.0.0
     - filelock==3.0.12
     - flask==1.1.1
@@ -44,12 +43,13 @@ dependencies:
     - scipy==1.6.0
     - six==1.15.0
     - tika==1.19
-    - tokenizers==0.10.1
+    - tokenizers==0.9.4
     - torch==1.7.1
     - tqdm==4.32.2
-    - transformers==4.3.2
+    - transformers==4.1.1
     - typing-extensions==3.7.4.3
     - urllib3==1.26.3
     - wget==3.2
+    - mlflow
 prefix: /Users/MHK/anaconda/envs/aisc-nlp
 
