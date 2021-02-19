@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request, url_for, session
 from tika import parser
 from werkzeug.utils import secure_filename
-
+import torch
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'pdf'}
