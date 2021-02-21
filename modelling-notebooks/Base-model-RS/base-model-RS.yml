@@ -1,0 +1,16 @@
+name: aisc-base-model-RS
+channels:
+  - intel
+  - conda-forge
+  - defaults
+  - anaconda
+  - pytorch
+dependencies:
+  - transformers
+  - pip
+  - pytorch
+  - mlflow
+  - pip:
+    - torch
+prefix: /Users/MHK/anaconda3/envs/aisc-base-model-RS
+

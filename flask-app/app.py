@@ -2,7 +2,9 @@ import os
 from flask import Flask, render_template, request, url_for, session
 from tika import parser
 from werkzeug.utils import secure_filename
-
+import pandas as pd
+from config import PATH_TO_MODEL
+import mlflow.pyfunc
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'pdf'}
@@ -68,12 +70,24 @@ def upload():
     file_data = parser.from_file(filepath)
     text = file_data['content']
 
+    # pull question text from user input
     
+    question = questions_dict[request.form.get("question")]
+
+    # create df (mlflow convention) to pass to mlflow model package 
+    input_df = pd.DataFrame([[text, question]], columns=['context', 'question'])
+
+    # load model and infer
+    mlflow_path = PATH_TO_MODEL
+    mlflow_model = mlflow.pyfunc.load_model(mlflow_path)
+
+    answer = mlflow_model.predict(input_df)['answer']
+
 
     render_values = {
-        'question': questions_dict[request.form.get("question")], 
+        'question': question,
         "context" : text,
-        "answer" : text
+        "answer" : answer
     }
 
     
