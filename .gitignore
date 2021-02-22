@@ -1,3 +1,4 @@
+flask-app/models/*
 models/*
 disclosure_docs_database/*
 mlruns/*
