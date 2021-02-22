@@ -1,6 +1,10 @@
-disclosure_docs_database/*
 modelling-notebooks/Base-model-RS/artifacts/*
+modelling-notebooks/.ipynb_checkpoints/*
+modelling-notebooks/mlruns/*
 flask-app/models/*
 mlruns/*
 models/*
 .ipynb_checkpoints/*
+flask-app/__pycache__/*
+flask-app/mlruns/*
+.vscode/*
