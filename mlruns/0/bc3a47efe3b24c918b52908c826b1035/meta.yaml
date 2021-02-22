@@ -1,5 +1,5 @@
 artifact_uri: file:///Users/yannusinovich/Documents/Projects/NLP-Workshop/aisc-nlp-project/mlruns/0/bc3a47efe3b24c918b52908c826b1035/artifacts
-end_time: null
+end_time: 1613682990332
 entry_point_name: ''
 experiment_id: '0'
 lifecycle_stage: active
@@ -10,6 +10,6 @@ source_name: ''
 source_type: 4
 source_version: ''
 start_time: 1613631085812
-status: 1
+status: 3
 tags: []
 user_id: yannusinovich

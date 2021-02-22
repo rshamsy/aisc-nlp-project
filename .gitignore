@@ -1,2 +1,3 @@
-models/
-disclosure_docs_database/
+models/*
+disclosure_docs_database/*
+mlruns/*
