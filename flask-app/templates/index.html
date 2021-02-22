@@ -17,15 +17,15 @@
     </div>
     <div class="container-md">
         <br><br>
-        <form action="{{url_for('upload')}}" method="post" enctype=multipart/form-data>
+        <form action="{{url_for('answers')}}" method="post" enctype=multipart/form-data>
             <div class="mb-3">
-                <label for="uploadInput" class="form-label">Upload a company's 10-K/Q, S-4, or proxy, in PDF format, to extract answers from:</label>
-                <input type="file" name="uploaded_file" class="form-control" id="uploadInput" aria-describedby="emailHelp">
+                <label for="uploadInput" class="form-label">Upload a company's 10-K/Q, S-4, or proxy, in PDF, TXT, or DOCX format, to extract answers from:</label>
+                <input type="file" name="uploaded_files" class="form-control" id="uploadInput" aria-describedby="emailHelp" multiple>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Select the question you'd like answered about the company:</label>
                 <select class="form-select" name="question" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
+                    <option selected>Choose one of the following:</option>
                     <option value="1">1: How does your board oversee climate issues?</option>
                     <option value="2">2: Who is responsible for climate-related issues?</option>
                     <option value="3">3: How are climate issues monitored?</option>
@@ -67,7 +67,6 @@
         </form>
     </div>
     
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,8 @@
+Flask==1.1.2
+pandas==1.2.2
+flask==1.1.2
+flask-cors==3.0.10
+flask-restplus==0.13.0
+tika==1.24
+Werkzeug==1.0.1
+mlflow==1.2.0

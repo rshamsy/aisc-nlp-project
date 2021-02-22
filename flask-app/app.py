@@ -1,13 +1,20 @@
 import os
-from flask import Flask, render_template, request, url_for, session
-from tika import parser
+from flask import Flask, render_template, request, url_for, session, request
 from werkzeug.utils import secure_filename
 import pandas as pd
 from config import PATH_TO_MODEL
-import mlflow.pyfunc
+# import mlflow.pyfunc
+from haystack.preprocessor.utils import convert_files_to_dicts
+from haystack.reader.farm import FARMReader
+from haystack.file_converter.txt import TextConverter
+from haystack.file_converter.pdf import PDFToTextConverter
+from haystack.file_converter.docx import DocxToTextConverter
+from haystack.document_store.memory import InMemoryDocumentStore
+from haystack.retriever.sparse import TfidfRetriever
+from haystack.pipeline import ExtractiveQAPipeline
 
 UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = {'pdf'}
+ALLOWED_EXTENSIONS = {'pdf', "txt", "docx"}
 questions_dict = {
     "1": "How does your board oversee climate issues?",
     "2": "Who is responsible for climate-related issues?",
@@ -55,46 +62,63 @@ def index():
 
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# TODO: change this to answers
-@app.route('/upload', methods=['POST'])
-def upload():
+@app.route('/answers', methods=['POST'])
+def answers():
     
-    file = request.files['uploaded_file']
-    filename = secure_filename(file.filename)
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    
-    # use tika package to extract text from PDF
-    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    file_data = parser.from_file(filepath)
-    text = file_data['content']
+    files = request.files.getlist("uploaded_files")
+    for file in files:
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+    # use haystack package to extract text from uploads
+
+    all_docs = convert_files_to_dicts(dir_path=f"{UPLOAD_FOLDER}")
 
     # pull question text from user input
     
-    question = questions_dict[request.form.get("question")]
+    question = request.form.get("question")
 
-    # create df (mlflow convention) to pass to mlflow model package 
-    input_df = pd.DataFrame([[text, question]], columns=['context', 'question'])
+    # load uploads into document store and create document retriever
 
-    # load model and infer
-    mlflow_path = PATH_TO_MODEL
-    mlflow_model = mlflow.pyfunc.load_model(mlflow_path)
+    document_store = InMemoryDocumentStore()
+    document_store.write_documents(all_docs)
+    retriever = TfidfRetriever(document_store=document_store)
 
-    answer = mlflow_model.predict(input_df)['answer']
+    # create reader
 
+    reader = FARMReader(model_name_or_path="deepset/xlm-roberta-large-squad2")
 
-    render_values = {
-        'question': question,
-        "context" : text,
-        "answer" : answer
+    # create pipeline
+
+    pipe = ExtractiveQAPipeline(reader, retriever)
+
+    # run inference
+
+    prediction = pipe.run(query=questions_dict[question], top_k_retriever=5, top_k_reader=5)
+
+    # send results to output.html
+    
+    render_values_1 = {
+        'question': questions_dict[question],
+        "context" : prediction["answers"][0]["context"],
+        "answer" : prediction["answers"][0]["answer"]
     }
 
+    render_values_2 = {
+        'question': questions_dict[question],
+        "context" : prediction["answers"][1]["context"],
+        "answer" : prediction["answers"][1]["answer"]
+    }
+
+    render_values_3 = {
+        'question': questions_dict[question],
+        "context" : prediction["answers"][2]["context"],
+        "answer" : prediction["answers"][2]["answer"]
+    }
     
-    return render_template('output.html', render_values=render_values)
+    return render_template('output.html', render_values_1=render_values_1, render_values_2=render_values_2, render_values_3=render_values_3)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
-
-    
-
