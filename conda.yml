@@ -187,5 +187,6 @@ dependencies:
     - websocket-client==0.57.0
     - werkzeug==0.16.1
     - wget==3.2
+name: aisc-nlp
 prefix: /Users/yannusinovich/opt/anaconda3/envs/aisc-nlp
 

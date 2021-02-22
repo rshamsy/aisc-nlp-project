@@ -1,5 +1,6 @@
-flask-app/models/*
-models/*
 disclosure_docs_database/*
+modelling-notebooks/Base-model-RS/artifacts/*
+flask-app/models/*
 mlruns/*
+models/*
 .ipynb_checkpoints/*
