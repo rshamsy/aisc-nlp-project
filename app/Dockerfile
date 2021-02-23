@@ -6,8 +6,8 @@ ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 # Allow apt-get install without interaction from console
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Set the workign directory to /root
-WORKDIR /root
+# Set the working directory to /root
+WORKDIR /root		
 
 # System updates and configurations
 RUN apt-get update && apt-get -y --no-install-recommends install \
@@ -42,6 +42,10 @@ RUN /bin/bash -c "source activate aisc-nlp" && \
 	pip install -r requirements.txt --no-cache-dir
 
 COPY start.sh /root
+
+RUN wget --no-check-certificate https://dl.xpdfreader.com/xpdf-tools-linux-4.03.tar.gz && \
+                   tar -xvf xpdf-tools-linux-4.03.tar.gz
+COPY --chown=<user>:<group> /root/xpdf-tools-linux-4.03/bin64/pdftotext /usr/local/bin
 
 # Make our start script executable
 RUN ["chmod", "+x", "/root/start.sh"]
