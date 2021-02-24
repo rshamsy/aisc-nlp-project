@@ -1,1 +1,2 @@
-PATH_TO_MODEL = "./models/M1-pyfunc"
+PATH_TO_MODEL = "./pyfunc_model"
+UPLOAD_FOLDER = 'uploads'

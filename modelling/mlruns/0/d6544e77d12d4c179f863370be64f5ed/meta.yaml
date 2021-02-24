@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/yannusinovich/Documents/Projects/NLP-Workshop/aisc-nlp-project/modelling-notebooks/mlruns/0/d6544e77d12d4c179f863370be64f5ed/artifacts
+end_time: 1614162304256
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: d6544e77d12d4c179f863370be64f5ed
+run_uuid: d6544e77d12d4c179f863370be64f5ed
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1614160490500
+status: 3
+tags: []
+user_id: yannusinovich

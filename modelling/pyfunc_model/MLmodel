@@ -1,0 +1,8 @@
+flavors:
+  python_function:
+    code: code
+    data: data/xlm-roberta-large-squad2
+    env: mlflow_env.yml
+    loader_module: wrapper_model
+    python_version: 3.8.6
+utc_time_created: '2021-02-24 18:04:41.567900'

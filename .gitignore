@@ -8,3 +8,5 @@ models/*
 flask-app/__pycache__/*
 flask-app/mlruns/*
 .vscode/*
+modelling/xlm-roberta-large-squad2/*
+modelling/pyfunc_model/data/xlm-roberta-large-squad2/*
