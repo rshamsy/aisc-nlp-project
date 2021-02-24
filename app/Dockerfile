@@ -15,6 +15,7 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
 		git \
 		ssh \
 		wget && \
+		# poppler-utils && \
 	apt-get clean && \
 	apt-get autoremove && \
 	rm -rf /var/lib/apt/lists/*
@@ -43,9 +44,14 @@ RUN /bin/bash -c "source activate aisc-nlp" && \
 
 COPY start.sh /root
 
-RUN wget --no-check-certificate https://dl.xpdfreader.com/xpdf-tools-linux-4.03.tar.gz && \
-                   tar -xvf xpdf-tools-linux-4.03.tar.gz
-COPY --chown=<user>:<group> /root/xpdf-tools-linux-4.03/bin64/pdftotext /usr/local/bin
+# RUN wget --no-check-certificate https://dl.xpdfreader.com/xpdf-tools-linux-4.03.tar.gz && \
+#     tar -xvf xpdf-tools-linux-4.03.tar.gz
+# RUN ls 
+COPY --chown=<user>:<group> xpdf-tools-linux-4.03/bin64/pdftotext /usr/bin
+
+# RUN apt-get install -y xpdf
+
+# ADD --chown=<user>:<group> https://dl.xpdfreader.com/xpdf-tools-linux-4.03.tar.gz /usr/bin
 
 # Make our start script executable
 RUN ["chmod", "+x", "/root/start.sh"]
