@@ -3,10 +3,12 @@ from flask import Flask, render_template, request, url_for, session
 from tika import parser
 from werkzeug.utils import secure_filename
 import pandas as pd
-from config import PATH_TO_MODEL
+from config import PATH_TO_MODEL, UPLOAD_FOLDER
 import mlflow.pyfunc
 
-UPLOAD_FOLDER = 'uploads'
+# A bug fix (random) – https://github.com/dmlc/xgboost/issues/1715
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
 ALLOWED_EXTENSIONS = {'pdf'}
 questions_dict = {
     "1": "How does your board oversee climate issues?",
@@ -58,10 +60,10 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # TODO: change this to answers
-@app.route('/upload', methods=['POST'])
-def upload():
+@app.route('/uploads', methods=['POST'])
+def uploads():
     
-    file = request.files['uploaded_file']
+    file = request.files['uploaded_files']
     filename = secure_filename(file.filename)
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     
