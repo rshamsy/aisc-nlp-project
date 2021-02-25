@@ -1,7 +1,7 @@
 modelling-notebooks/Base-model-RS/artifacts/*
 modelling-notebooks/.ipynb_checkpoints/*
 modelling-notebooks/mlruns/*
-flask-app/models/*
+app-v0/flask-app/models/*
 mlruns/*
 models/*
 .ipynb_checkpoints/*
