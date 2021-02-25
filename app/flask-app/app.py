@@ -5,11 +5,10 @@ import pandas as pd
 from config import UPLOAD_FOLDER, PATH_TO_MODEL
 import mlflow.pyfunc
 
-# UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'pdf', "txt", "docx"}
 
 app = Flask(__name__)
-# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/')
 @app.route('/home')
@@ -57,19 +56,19 @@ def answers():
     
     render_values_1 = {
         'question': question,
-        "answer" : answer1
+        "answer" : answer1,
         "context" : context1
     }
 
     render_values_2 = {
         'question': question,
-        "answer" : answer2
+        "answer" : answer2,
         "context" : context2
     }
 
     render_values_3 = {
         'question': question,
-        "answer" : answer3
+        "answer" : answer3,
         "context" : context3
     }
     

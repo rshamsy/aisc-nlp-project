@@ -8,6 +8,10 @@ flask-app/models/*
 flask-app/__pycache__/*
 flask-app/mlruns/*
 
+app-v0/flask-app/__pycache__
+app/flask-app/pyfunc_model/*
+app/flask-app/__pycache__
+
 mlruns/*
 models/*
 .ipynb_checkpoints/*
