@@ -9,7 +9,7 @@ flask-app/__pycache__/*
 flask-app/mlruns/*
 
 app-v0/flask-app/__pycache__
-app-v0/flask-app/models
+app-v0/flask-app/models/*
 
 app/flask-app/pyfunc_model/*
 app/flask-app/__pycache__
