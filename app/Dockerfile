@@ -14,8 +14,8 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
 		ca-certificates \
 		git \
 		ssh \
-		wget && \
-		# poppler-utils && \
+		wget \
+		libfontconfig && \
 	apt-get clean && \
 	apt-get autoremove && \
 	rm -rf /var/lib/apt/lists/*
@@ -32,7 +32,7 @@ ENV PATH /root/miniconda/bin:$PATH
 COPY ./flask-app /root
 
 # Create a conda environment from the specified conda.yml
-RUN conda env create --file /root/conda.yml
+RUN conda env create --file /root/pyfunc_model/mlflow_env.yml
 
 # Add to .bashrc
 RUN echo "source activate aisc-nlp" >> .bashrc
@@ -44,14 +44,7 @@ RUN /bin/bash -c "source activate aisc-nlp" && \
 
 COPY start.sh /root
 
-# RUN wget --no-check-certificate https://dl.xpdfreader.com/xpdf-tools-linux-4.03.tar.gz && \
-#     tar -xvf xpdf-tools-linux-4.03.tar.gz
-# RUN ls 
-COPY --chown=<user>:<group> xpdf-tools-linux-4.03/bin64/pdftotext /usr/bin
-
-# RUN apt-get install -y xpdf
-
-# ADD --chown=<user>:<group> https://dl.xpdfreader.com/xpdf-tools-linux-4.03.tar.gz /usr/bin
+COPY --chown=<user>:<group> xpdf-tools-linux-4.03/bin64/pdftotext /usr/local/bin
 
 # Make our start script executable
 RUN ["chmod", "+x", "/root/start.sh"]

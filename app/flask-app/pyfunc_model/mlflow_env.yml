@@ -1,0 +1,11 @@
+channels:
+- intel
+- conda-forge
+- defaults
+dependencies:
+- pandas=1.2.1
+- pytorch=1.7.1
+- pip:
+  - farm-haystack==0.7.0
+name: aisc-nlp
+prefix: /Users/yannusinovich/opt/anaconda3/envs/aisc-nlp

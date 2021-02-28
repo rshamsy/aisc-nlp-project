@@ -36,7 +36,7 @@ def answers():
 
     mlflow_model = mlflow.pyfunc.load_model(PATH_TO_MODEL)
 
-    df_in = pd.DataFrame([question, UPLOAD_FOLDER], columns=['question_number', "upload_folder"])
+    df_in = pd.DataFrame([[question, UPLOAD_FOLDER]], columns=['question_number', "upload_folder"])
 
     question,prediction = mlflow_model.predict(df_in)
 

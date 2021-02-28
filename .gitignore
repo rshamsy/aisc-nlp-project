@@ -1,18 +1,18 @@
 modelling/Base-model-RS/artifacts/*
 modelling/.ipynb_checkpoints/*
+modelling/__pycache__/*
 modelling/mlruns/*
 modelling/xlm-roberta-large-squad2/*
-modelling/pyfunc_model/data/xlm-roberta-large-squad2/*
-
-flask-app/models/*
-flask-app/__pycache__/*
-flask-app/mlruns/*
+modelling/saved_model/*
 
 app-v0/flask-app/__pycache__
 app-v0/flask-app/models/*
+app-v0/flask-app/uploads/*
 
-app/flask-app/pyfunc_model/*
-app/flask-app/__pycache__
+app/flask-app/pyfunc_model/data/*
+app/flask-app/__pycache__/*
+app/flask-app/mlruns/*
+app/flask-app/uploads/*
 
 mlruns/*
 models/*

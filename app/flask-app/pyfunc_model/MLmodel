@@ -1,0 +1,8 @@
+flavors:
+  python_function:
+    code: code
+    data: data/saved_model
+    env: mlflow_env.yml
+    loader_module: wrapper_model
+    python_version: 3.8.6
+utc_time_created: '2021-02-27 20:24:47.359028'
