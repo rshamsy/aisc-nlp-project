@@ -61,13 +61,11 @@ class ModelWrapper():
     question_number = int(data["question_number"][0])
     question = simple_questions[question_number]
     pipe = ExtractiveQAPipeline(self._reader, retriever)
-    prediction = pipe.run(query=simple_questions[question_number], top_k_retriever=5, top_k_reader=5)
+    prediction = pipe.run(query=simple_questions[question_number], top_k_retriever=10, top_k_reader=3)
 
     return question,prediction
 
 def _load_pyfunc(path):
-
-  # full_path = os.path.join(path,"data","saved_model")
 
   # Load the model object
   reader = FARMReader(model_name_or_path=path)

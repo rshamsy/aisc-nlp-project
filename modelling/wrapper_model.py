@@ -6,6 +6,7 @@ from haystack.file_converter.docx import DocxToTextConverter
 from haystack.document_store.memory import InMemoryDocumentStore
 from haystack.retriever.sparse import TfidfRetriever
 from haystack.pipeline import ExtractiveQAPipeline
+import os
 
 simple_questions = [
     "How does your board oversee climate issues?",
@@ -50,24 +51,24 @@ class ModelWrapper():
     self._reader = reader
 
   def predict(self, data):
-    upload_folder = data.iloc[0,"upload_folder"]
+    upload_folder = data["upload_folder"][0]
 
     all_docs = convert_files_to_dicts(dir_path=f"{upload_folder}")
     document_store = InMemoryDocumentStore()
     document_store.write_documents(all_docs)
     retriever = TfidfRetriever(document_store=document_store)
     
-    question_number = data.iloc[0,"question_number"]
+    question_number = int(data["question_number"][0])
     question = simple_questions[question_number]
     pipe = ExtractiveQAPipeline(self._reader, retriever)
-    prediction = pipe.run(query=simple_questions[question_number], top_k_retriever=5, top_k_reader=5)
+    prediction = pipe.run(query=simple_questions[question_number], top_k_retriever=10, top_k_reader=3)
 
     return question,prediction
 
 def _load_pyfunc(path):
 
   # Load the model object
-  reader = FARMReader(model_name_or_path="./data/xlm-roberta-large-squad2")
+  reader = FARMReader(model_name_or_path=path)
 
   return ModelWrapper(
     reader=reader
