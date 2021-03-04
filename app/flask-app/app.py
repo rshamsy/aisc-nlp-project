@@ -28,15 +28,16 @@ def answers():
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-    # pull question text from user input
+    # pull question text and company from user input
     
+    company = request.form.get("company")
     question = request.form.get("question")
 
     # load model with pyfunc and make prediction
 
     mlflow_model = mlflow.pyfunc.load_model(PATH_TO_MODEL)
 
-    df_in = pd.DataFrame([[question, UPLOAD_FOLDER]], columns=['question_number', "upload_folder"])
+    df_in = pd.DataFrame([[company, question, UPLOAD_FOLDER]], columns=["company_name", 'question_number', "upload_folder"])
 
     question,prediction = mlflow_model.predict(df_in)
 

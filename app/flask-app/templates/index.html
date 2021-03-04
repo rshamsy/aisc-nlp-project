@@ -19,54 +19,36 @@
         <br><br>
         <form action="{{url_for('answers')}}" method="post" enctype=multipart/form-data>
             <div class="mb-3">
-                <label for="uploadInput" class="form-label">Upload a company's 10-K/Q, S-4, or proxy, in PDF, TXT, or DOCX format, to extract answers from:</label>
+                <label for="uploadInput" class="form-label">Upload a company's Sustainability Disclosure Report, 10-K/10-Q, S-4, or Proxy, in PDF, TXT, or DOCX format, to extract answers from. Multiple documents can be uploaded:</label>
                 <input type="file" name="uploaded_files" class="form-control" id="uploadInput" aria-describedby="emailHelp" multiple>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Enter the name of the company:</label>
+                <input type="text" name="company" class="form-control" id="exampleFormControlInput1" placeholder="Acme Corporation">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Select the question you'd like answered about the company:</label>
                 <select class="form-select" name="question" aria-label="Default select example">
                     <option selected>Choose one of the following:</option>
-                    <option value="1">1: How does your board oversee climate issues?</option>
-                    <option value="2">2: Who is responsible for climate-related issues?</option>
-                    <option value="3">3: How are climate issues monitored?</option>
-                    <option value="4">4: Do you identify and respond to climate risks and opportunities?</option>
-                    <option value="5">5: How do you define long-term time horizons?</option>
-                    <option value="6">6: How do you identify and respond to climate risks and opportunities?</option>
-                    <option value="7">7: Which climate risk types do you consider?</option>
-                    <option value="8">8: Do you assess your portfolio's exposure to climate risks and opportunities?</option>
-                    <option value="9">9: How do you assess your portfolio's exposure to climate risks and opportunities?</option>
-                    <option value="10">10: Do you request climate-related information from your clients or investees?</option>
-                    <option value="11">11: Do climate risks have a financial impact on your business?</option>
-                    <option value="12">12: What climate risks may have a financial impact on your business?</option>
-                    <option value="13">13: Are there any climate opportunities that have financial impact on your business?</option>
-                    <option value="14">14: What climate opportunities will have a financial impact on your business?</option>
-                    <option value="15">15: Have climate risks and opportunities influenced your strategy or finances?</option>
-                    <option value="16">16: Do you analyze climate scenarios to inform your strategy?</option>
-                    <option value="17">17: What climate scenarios do you analyze?</option>
-                    <option value="18">18: How have climate risks and opportunities influenced your strategy?</option>
-                    <option value="19">19: How have climate risks and opportunities influenced your financial planning?</option>
-                    <option value="20">20: Do climate issues effect your external asset manager or independent asset manager selection?</option>
-                    <option value="21">21: How do climate issues effect your external asset manager or independent asset manager selection?</option>
-                    <option value="22">22: Did you have an emissions target?</option>
-                    <option value="23">23: What is your absolute emissions target progress?</option>
-                    <option value="24">24: What is your emissions intensity target progress?</option>
-                    <option value="25">25: Did you have climate targets?</option>
-                    <option value="26">26: What are your targets to increase low-carbon energy consumption or production?</option>
-                    <option value="27">27: What are your methane-reduction targets?</option>
-                    <option value="28">28: What were your buildings' operational Scope 1 emissions in metric tons of carbon dioxide?</option>
-                    <option value="29">29: What were market-based power usage Scope 2 emissions in metric tons of carbon dioxide?</option>
-                    <option value="30">30: What were your employees' Scope 3 emissions in metric tons of carbon dioxide?</option>
-                    <option value="31">31: What climate metrics do you use?</option>
-                    <option value="32">32: Do you analyze how your portfolio impacts the climate?</option>
-                    <option value="33">33: What are your Scope 3 portfolio emissions?</option>
-                    <option value="34">34: What is your Scope 3 portfolio impact from Category 15 Investments with alternative carbon footprinting or exposure metrics?</option>
-                    <option value="35">35: Why do you not conduct analysis to understand how your portfolio impacts the climate with Scope 3 portfolio impact from Category 15 Investments with alternative carbon footprinting or exposure metrics?</option>
+                    <option value="1">1: Does the organization describe the board’s oversight of climate-related risks and/or opportunities?</option>
+                    <option value="2">2: Does the organization describe management’s role in assessing and managing climate-related risks and/or opportunities? </option>
+                    <option value="3">3: Does the organization describe the climate-related risks or opportunities the organization has identified?</option>
+                    <option value="4">4: Does the organization describe time frames (short, medium, or long term) associated with its climate-related risks or opportunities? </option>
+                    <option value="5">5: Does the organization describe the impact of climate-related risks and opportunities on the organization?</option>
+                    <option value="6">6: Does the organization describe the resilience of its climate strategy?</option>
+                    <option value="7">7: Does the organization disclose the use of a 2C scenario in evaluating strategy or financial planning, or for other business purposes? </option>
+                    <option value="8">8: Does the organization describe the organization’s processes for identifying and/or assessing climate-related risks? </option>
+                    <option value="9">9: Does the organization describe the organization’s processes for managing climate-related risks? </option>
+                    <option value="10">10: Does the organization describe how processes for identifying, assessing, and managing climate-related risks are integrated into the organization’s overall risk management?</option>
+                    <option value="11">11: Does the organization disclose the metrics it uses to assess climate-related risks and/or opportunities?" </option>
+                    <option value="12">12: Does the organization disclose Scope 1 and Scope 2, and, if appropriate Scope 3 GHG emissions?</option>
+                    <option value="13">13: Does the organization describe the targets it uses to manage climate-related risks and/or opportunities?</option>
+                    <option value="14">14: Does the organization describe its performance related to those targets (referenced in question 13)? </option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 </html>
