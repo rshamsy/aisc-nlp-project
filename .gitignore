@@ -4,6 +4,7 @@ modelling/__pycache__/*
 modelling/mlruns/*
 modelling/xlm-roberta-large-squad2/*
 modelling/saved_model/*
+modelling/tuned_1_iter_xlm-roberta-large-squad2/*
 
 app-v0/flask-app/__pycache__
 app-v0/flask-app/models/*

@@ -12,14 +12,14 @@ from haystack.retriever.sparse import TfidfRetriever
 from haystack.retriever.dense import DensePassageRetriever, EmbeddingRetriever
 from haystack.pipeline import ExtractiveQAPipeline
 
-reader = FARMReader(model_name_or_path="deepset/xlm-roberta-large-squad2")
+reader = FARMReader(model_name_or_path="deepset/xlm-roberta-large-squad2", use_gpu=True)
 
 import wrapper_model
 import mlflow
 import torch
 
 train_data = "./answers"
-reader.train(data_dir=train_data, train_filename="answers.json", use_gpu=False, n_epochs=1, save_dir="tuned_1_iter_xlm-roberta-large-squad2")
+reader.train(data_dir=train_data, train_filename="answers.json", use_gpu=True, n_epochs=1, save_dir="tuned_1_iter_xlm-roberta-large-squad2")
 
 mlflow_path = './pyfunc_model'
 
